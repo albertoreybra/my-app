@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export default function Characters(props) {
 
-  const { characters, setCharacters } = props;
+  const { characters, setCharacters, favorites, toggleFavorite } = props;
 
   const resetCharacters = () => {
     setCharacters(null);
@@ -42,6 +42,9 @@ export default function Characters(props) {
                   <span className='text-gray'>Especie: </span>
                   <span>{character.species}</span>
                 </p>
+                <button onClick={() => toggleFavorite(character)}>
+                  {favorites.some(fav => fav.name === character.name) ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+                </button>
               </div>
             </div>
           ))}
